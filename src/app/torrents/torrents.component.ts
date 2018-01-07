@@ -1,6 +1,12 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {MatSort, MatTableDataSource} from '@angular/material';
+import {TorrentService} from '../service/torrent.service';
+import {merge} from 'rxjs/observable/merge';
+import {catchError, startWith} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operator/switchMap';
+import {map} from 'rxjs/operator/map';
+import {getRandomString} from 'selenium-webdriver/safari';
 
 @Component({
   selector: 'app-torrents',
@@ -10,39 +16,31 @@ import {MatSort, MatTableDataSource} from '@angular/material';
 export class TorrentsComponent implements OnInit, AfterViewInit {
 
   displayedColumns = ['id', 'name'];
-  dataSource = new MatTableDataSource(TORRENTS_DATA);
+  dataSource = new MatTableDataSource();
   torrentURL = '';
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title, private torrentService: TorrentService) {
     titleService.setTitle('Torrents');
   }
 
   ngOnInit() {
+    this.getTorrents();
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+  }
+
+  getTorrents() {
+    this.torrentService.getTorrents().subscribe(t => this.dataSource.data = t);
   }
 
   addTorrent() {
-    console.log(this.dataSource.data);
-    const copiedData = this.dataSource.data.slice();
-    copiedData.push({id: '11', name: this.torrentURL});
-    this.dataSource.connect().next(copiedData);
+    this.torrentService
+      .addTorrent({id: '11', name: this.torrentURL})
+      .subscribe((x) => this.getTorrents());
     return false;
   }
 }
 
-export interface Torrent {
-  id: string;
-  name: string;
-}
-
-const TORRENTS_DATA: Torrent[] = [
-  {id: '1', name: 'xxx'},
-  {id: '2', name: 'www'},
-  {id: '3', name: 'xxe'},
-  {id: '4', name: 'ewq'},
-];

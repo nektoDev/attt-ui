@@ -12,6 +12,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {FormsModule} from '@angular/forms';
+import {TorrentService} from "./service/torrent.service";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {FormsModule} from '@angular/forms';
     FormsModule
   ],
   providers: [
-    Title
+    Title,
+    TorrentService
   ],
   bootstrap: [AppComponent]
 })
