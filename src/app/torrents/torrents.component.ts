@@ -11,6 +11,7 @@ export class TorrentsComponent implements OnInit, AfterViewInit {
 
   displayedColumns = ['id', 'name'];
   dataSource = new MatTableDataSource(TORRENTS_DATA);
+  torrentURL = '';
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -23,6 +24,14 @@ export class TorrentsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  addTorrent() {
+    console.log(this.dataSource.data);
+    const copiedData = this.dataSource.data.slice();
+    copiedData.push({id: '11', name: this.torrentURL});
+    this.dataSource.connect().next(copiedData);
+    return false;
   }
 }
 

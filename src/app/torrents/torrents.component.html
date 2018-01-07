@@ -1,12 +1,23 @@
+<form class="add-torrent-form">
+  <div >
+    <mat-form-field style="width: 100%">
+      <input matInput placeholder="Link to rutracker" [(ngModel)]="torrentURL"  name="torrentURL"/>
+      <button mat-button matSuffix (click)="addTorrent()" >
+        <mat-icon class="toolbar-icon">add</mat-icon>
+        Add
+      </button>
+    </mat-form-field>
+  </div>
+</form>
 <div class="mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID </mat-header-cell>
-      <mat-cell *matCellDef="let torrent"> {{torrent.id}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.id}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name </mat-header-cell>
-      <mat-cell *matCellDef="let torrent"> {{torrent.name}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.name}}</mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let data; columns: displayedColumns;"></mat-row>
