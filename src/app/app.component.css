@@ -1,0 +1,16 @@
+.spoace-filler {
+  flex: 1 1 auto;
+}
+
+.attt-logo {
+  height: 26px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle
+}
+
+.mat-toolbar.mat-primary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
