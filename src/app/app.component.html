@@ -1,12 +1,15 @@
 <mat-toolbar color="primary">
   <span>
     <button mat-button routerLink="/" routerLinkActive="active">
-      <mat-icon class="attt-logo">home</mat-icon> ATTT
+      <mat-icon class="toolbar-icon">home</mat-icon> ATTT
     </button>
     <button mat-button routerLink="/torrents" routerLinkActive="active">TORRENTS</button>
   </span>
   <!-- This fills the remaining space of the current row -->
   <span class="space-filler"></span>
+  <span>
+      <button mat-icon-button	 routerLink="/" routerLinkActive="active"><mat-icon>settings</mat-icon></button>
+  </span>
 </mat-toolbar>
 <section class="mat-typography">
   <div class="body-wrapper">
