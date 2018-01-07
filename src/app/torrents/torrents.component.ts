@@ -39,7 +39,7 @@ export class TorrentsComponent implements OnInit, AfterViewInit {
   addTorrent() {
     this.torrentService
       .addTorrent({id: '11', name: this.torrentURL})
-      .subscribe((x) => this.getTorrents());
+      .subscribe((x) => {this.getTorrents(); this.torrentURL = '';});
     return false;
   }
 }
