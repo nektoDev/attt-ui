@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TorrentsComponent } from './torrents/torrents.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing/app-routing.module';
-import {MatButtonModule, MatIconModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatTableModule, MatToolbarModule} from '@angular/material';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import {MatButtonModule, MatIconModule, MatToolbarModule} from '@angular/materia
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   providers: [
     Title

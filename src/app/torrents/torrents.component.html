@@ -1,3 +1,14 @@
-<p>
-  torrents works!
-</p>
+<div class="mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID </mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name </mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.name}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let data; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
