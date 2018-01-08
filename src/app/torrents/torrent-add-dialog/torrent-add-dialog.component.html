@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Add torrent</h1>
+<div mat-dialog-content (keydown.enter)="onKeyPressed()">
+  <mat-form-field style="width: 100%" >
+    <input matInput placeholder="URL" [(ngModel)]="torrent.url" name="url">
+  </mat-form-field>
+  <mat-form-field >
+    <mat-select cdkFocusInitial placeholder="Media kind" [(ngModel)]="torrent.kind" (selectionChange)="onKindSelect()" name="kind">
+      <mat-option *ngFor="let kind of getMediaKinds()" [value]="kind">
+        {{ kind }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <input matInput placeholder="Name" [(ngModel)]="torrent.name" (input)="onNameChange($event.target.value)" name="name">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <input matInput placeholder="Download directory" [(ngModel)]="torrent.downloadDirectory" name="downloadDir">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="torrent" disabled="{{!isValidDialogData()}}" type="submit"> Ok</button>
+  <button mat-button (click)="onCancel()">Cancel</button>
+</div>

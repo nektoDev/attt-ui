@@ -1,8 +1,8 @@
 <form class="add-torrent-form">
   <div>
     <mat-form-field style="width: 100%">
-      <input matInput placeholder="Link to rutracker" [(ngModel)]="torrentURL" name="torrentURL"/>
-      <button mat-button matSuffix (click)="addTorrent()">
+      <input matInput placeholder="Link to rutracker" [(ngModel)]="torrentURL" name="torrentURL" appAutofocus/>
+      <button mat-button matSuffix (click)="openAddTorrentDialog()" disabled="{{!isTorrentUrlValid()}}" >
         <mat-icon class="toolbar-icon">add</mat-icon>
         Add
       </button>

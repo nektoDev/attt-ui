@@ -1,4 +1,4 @@
-export interface Torrent {
+export class Torrent {
   id: string;
   hash: string;
   name: string;
@@ -9,4 +9,6 @@ export interface Torrent {
   created: Date;
   lastChecked: Date;
   lastUpdated: Date;
+
+  constructor() {}
 }
