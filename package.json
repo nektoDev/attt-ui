@@ -1,6 +1,6 @@
 {
   "name": "attt-ui",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -8,8 +8,12 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
+    "release:major": "npm version major && git push --follow-tags",
+    "release:minor": "npm version minor && git push --follow-tags",
+    "release:patch": "npm version patch && git push --follow-tags",
     "e2e": "ng e2e"
   },
+  "author": "NektoDev",
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.1.3",
