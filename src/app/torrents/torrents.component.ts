@@ -2,11 +2,6 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {TorrentService} from '../service/torrent.service';
-import {merge} from 'rxjs/observable/merge';
-import {catchError, startWith} from 'rxjs/operators';
-import {switchMap} from 'rxjs/operator/switchMap';
-import {map} from 'rxjs/operator/map';
-import {getRandomString} from 'selenium-webdriver/safari';
 
 @Component({
   selector: 'app-torrents',
@@ -15,7 +10,7 @@ import {getRandomString} from 'selenium-webdriver/safari';
 })
 export class TorrentsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['url', 'magnet', 'downloadDirectory', 'tracked', 'created', 'lastChecked', 'lastUpdated'];
   dataSource = new MatTableDataSource();
   torrentURL = '';
 
@@ -37,9 +32,9 @@ export class TorrentsComponent implements OnInit, AfterViewInit {
   }
 
   addTorrent() {
-    this.torrentService
-      .addTorrent({id: '11', name: this.torrentURL})
-      .subscribe((x) => {this.getTorrents(); this.torrentURL = '';});
+    // this.torrentService
+      // .addTorrent()
+      // .subscribe((x) => {this.getTorrents(); this.torrentURL = ''; });
     return false;
   }
 }

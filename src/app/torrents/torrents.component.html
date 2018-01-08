@@ -1,8 +1,8 @@
 <form class="add-torrent-form">
-  <div >
+  <div>
     <mat-form-field style="width: 100%">
-      <input matInput placeholder="Link to rutracker" [(ngModel)]="torrentURL"  name="torrentURL"/>
-      <button mat-button matSuffix (click)="addTorrent()" >
+      <input matInput placeholder="Link to rutracker" [(ngModel)]="torrentURL" name="torrentURL"/>
+      <button mat-button matSuffix (click)="addTorrent()">
         <mat-icon class="toolbar-icon">add</mat-icon>
         Add
       </button>
@@ -11,13 +11,33 @@
 </form>
 <div class="mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID</mat-header-cell>
-      <mat-cell *matCellDef="let torrent"> {{torrent.id}}</mat-cell>
+    <ng-container matColumnDef="url">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="t-url">url</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> <a href="{{torrent.url}}" target="_blank">{{torrent.name || torrent.url}}</a></mat-cell>
     </ng-container>
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name</mat-header-cell>
-      <mat-cell *matCellDef="let torrent"> {{torrent.name}}</mat-cell>
+    <ng-container matColumnDef="magnet">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="t-magnet">magnet</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> <a [href]="torrent.magnet | unsanitized">Magnet</a></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="downloadDirectory">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="t-downloadDirectory">downloadDirectory</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.downloadDirectory}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="tracked">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="t-tracked">tracked</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> <mat-checkbox disabled="true" [(ngModel)]="torrent.tracked"></mat-checkbox></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="created">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="t-created">created</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.created | date: 'MMM dd HH:mm'}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastChecked">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="t-lastChecked">lastChecked</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.lastChecked | date: 'MMM dd HH:mm'}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastUpdated">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="t-lastUpdated">lastUpdated</mat-header-cell>
+      <mat-cell *matCellDef="let torrent"> {{torrent.lastUpdated | date: 'MMM dd HH:mm'}}</mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let data; columns: displayedColumns;"></mat-row>

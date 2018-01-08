@@ -1,4 +1,4 @@
-import {BrowserModule, Title} from '@angular/platform-browser';
+import {BrowserModule, DomSanitizer, Title} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
@@ -8,11 +8,14 @@ import { TorrentsComponent } from './torrents/torrents.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {
-  MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTableModule,
+  MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPseudoCheckboxModule,
+  MatTableModule,
   MatToolbarModule
 } from '@angular/material';
 import {FormsModule} from '@angular/forms';
-import {TorrentService} from "./service/torrent.service";
+import {TorrentService} from './service/torrent.service';
+import { HttpClientModule } from '@angular/common/http';
+import { UnsanitizedPipe } from './pipes/unsanitized.pipe';
 
 
 @NgModule({
@@ -20,6 +23,7 @@ import {TorrentService} from "./service/torrent.service";
     AppComponent,
     DashboardComponent,
     TorrentsComponent,
+    UnsanitizedPipe,
   ],
   imports: [
     BrowserModule,
@@ -31,11 +35,14 @@ import {TorrentService} from "./service/torrent.service";
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule,
+    MatPseudoCheckboxModule,
+    HttpClientModule,
   ],
   providers: [
     Title,
-    TorrentService
+    TorrentService,
   ],
   bootstrap: [AppComponent]
 })
