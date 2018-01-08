@@ -12,10 +12,10 @@ export class TorrentService {
   }
 
   getTorrents(): Observable<Torrent[]> {
-    return this.http.get<Torrent[]>('http://localhost:8080/torrent');
+    return this.http.get<Torrent[]>('http://192.168.1.11:8081/attt/torrent');
   }
 
   addTorrent(torrent: TorrentAddRequest): Observable<any> {
-    return this.http.post('http://localhost:8080/torrent', torrent);
+    return this.http.post('http://192.168.1.11:8081/attt/torrent', torrent);
   }
 }
