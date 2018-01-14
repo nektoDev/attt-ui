@@ -15,7 +15,7 @@ export class TorrentsComponent implements OnInit, AfterViewInit {
 
   displayedColumns = ['url', 'magnet', 'downloadDirectory', 'tracked', 'created', 'lastChecked', 'lastUpdated'];
   dataSource = new MatTableDataSource();
-  torrentURL = 'https://rutracker.org/forum/viewtopic.php?t=5487552';
+  torrentURL = '';
 
   @ViewChild(MatSort) sort: MatSort;
 
