@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod --env=prod",
     "test": "ng test",
     "lint": "ng lint",
     "release:major": "npm version major && git push --follow-tags",
