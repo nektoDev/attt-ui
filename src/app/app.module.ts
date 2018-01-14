@@ -9,7 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {
   MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule,
-  MatPseudoCheckboxModule, MatRadioModule, MatSelectModule,
+  MatPseudoCheckboxModule, MatRadioModule, MatSelectModule, MatSortModule,
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
@@ -46,7 +46,8 @@ import { AutoFocusDirective } from './directives/auto-focus.directive';
     MatDialogModule,
     HttpClientModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule
   ],
   entryComponents: [
     TorrentAddDialogComponent

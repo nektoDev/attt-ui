@@ -12,31 +12,31 @@
 <div class="mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="url">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="t-url">url</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>url</mat-header-cell>
       <mat-cell *matCellDef="let torrent"> <a href="{{torrent.url}}" target="_blank">{{torrent.name || torrent.url}}</a></mat-cell>
     </ng-container>
     <ng-container matColumnDef="magnet">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="t-magnet">magnet</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="magnet">magnet</mat-header-cell>
       <mat-cell *matCellDef="let torrent"> <a [href]="torrent.magnet | unsanitized">Magnet</a></mat-cell>
     </ng-container>
     <ng-container matColumnDef="downloadDirectory">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="t-downloadDirectory">downloadDirectory</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="downloadDirectory">downloadDirectory</mat-header-cell>
       <mat-cell *matCellDef="let torrent"> {{torrent.downloadDirectory}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="tracked">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="t-tracked">tracked</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="tracked">tracked</mat-header-cell>
       <mat-cell *matCellDef="let torrent"> <mat-checkbox disabled="true" [(ngModel)]="torrent.tracked"></mat-checkbox></mat-cell>
     </ng-container>
     <ng-container matColumnDef="created">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="t-created">created</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="created">created</mat-header-cell>
       <mat-cell *matCellDef="let torrent"> {{torrent.created | date: 'MMM dd HH:mm'}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastChecked">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="t-lastChecked">lastChecked</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>lastChecked</mat-header-cell>
       <mat-cell *matCellDef="let torrent"> {{torrent.lastChecked | date: 'MMM dd HH:mm'}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastUpdated">
-      <mat-header-cell *matHeaderCellDef mat-sort-header="t-lastUpdated">lastUpdated</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header="lastUpdated">lastUpdated</mat-header-cell>
       <mat-cell *matCellDef="let torrent"> {{torrent.lastUpdated | date: 'MMM dd HH:mm'}}</mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
