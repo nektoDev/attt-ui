@@ -1,0 +1,23 @@
+.alert-messages {
+  width: 300px;
+  position: fixed;
+  top: 10%;
+  right: 2%;
+  z-index: 1000;
+}
+
+.messageCard {
+  background-color: rgba(30, 136, 229, 0.75);
+  color: white;
+}
+
+.close-button {
+  position: absolute;
+  top: 18%;
+  right: 1em;
+}
+.message-content {
+  padding-right: 1em;
+}
+
+

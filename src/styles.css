@@ -14,3 +14,13 @@ body {
 .mat-header-cell.mat-sort-header-sorted {
   color: black;
 }
+
+.space-filler {
+  flex: 1 1 auto;
+}
+
+.toolbar-icon {
+  height: 26px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle
+}

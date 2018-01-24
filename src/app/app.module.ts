@@ -8,7 +8,7 @@ import { TorrentsComponent } from './torrents/torrents.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {
-  MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule,
   MatPseudoCheckboxModule, MatRadioModule, MatSelectModule, MatSortModule,
   MatTableModule,
   MatToolbarModule
@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UnsanitizedPipe } from './pipes/unsanitized.pipe';
 import { TorrentAddDialogComponent } from './torrents/torrent-add-dialog/torrent-add-dialog.component';
 import { AutoFocusDirective } from './directives/auto-focus.directive';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './service/message.service';
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { AutoFocusDirective } from './directives/auto-focus.directive';
     UnsanitizedPipe,
     TorrentAddDialogComponent,
     AutoFocusDirective,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,9 @@ import { AutoFocusDirective } from './directives/auto-focus.directive';
     HttpClientModule,
     MatRadioModule,
     MatSelectModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule
+
   ],
   entryComponents: [
     TorrentAddDialogComponent
@@ -55,6 +60,7 @@ import { AutoFocusDirective } from './directives/auto-focus.directive';
   providers: [
     Title,
     TorrentService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

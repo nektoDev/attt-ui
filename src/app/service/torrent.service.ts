@@ -4,21 +4,38 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import {TorrentAddRequest} from '../model/torrent-add-request';
 import {environment} from '../../environments/environment';
+import {catchError, tap} from 'rxjs/operators';
+import {of} from 'rxjs/observable/of';
+import {MessageService} from './message.service';
 
 @Injectable()
 export class TorrentService {
 
   torrentURL = environment.attt_host + '/torrent';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private messages: MessageService) {
 
   }
 
   getTorrents(): Observable<Torrent[]> {
-    return this.http.get<Torrent[]>(this.torrentURL);
+    return this.http.get<Torrent[]>(this.torrentURL).pipe(
+      tap(_ => this.messages.add(`Torrents fetched`)),
+      catchError(this.handleError('Fetching torrents', []))
+    );
   }
 
   addTorrent(torrent: TorrentAddRequest): Observable<any> {
-    return this.http.post(this.torrentURL, torrent);
+    return this.http.post(this.torrentURL, torrent).pipe(
+      tap(_ => this.messages.add(`Torrent ${torrent.name} has been added`)),
+      catchError(this.handleError('Add torrent', []))
+    );
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      this.messages.add(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 }
