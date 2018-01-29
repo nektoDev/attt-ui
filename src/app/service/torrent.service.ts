@@ -19,14 +19,14 @@ export class TorrentService {
 
   getTorrents(): Observable<Torrent[]> {
     return this.http.get<Torrent[]>(this.torrentURL).pipe(
-      tap(_ => this.messages.add(`Torrents fetched`)),
+      tap(_ => this.messages.success(`Torrents fetched`)),
       catchError(this.handleError('Fetching torrents', []))
     );
   }
 
   addTorrent(torrent: TorrentAddRequest): Observable<any> {
     return this.http.post(this.torrentURL, torrent).pipe(
-      tap(_ => this.messages.add(`Torrent ${torrent.name} has been added`)),
+      tap(_ => this.messages.success(`Torrent ${torrent.name} has been added`)),
       catchError(this.handleError('Add torrent', []))
     );
   }
@@ -34,7 +34,7 @@ export class TorrentService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.messages.add(`${operation} failed: ${error.message}`);
+      this.messages.error(`${operation} failed: ${error.error.message}`);
       return of(result as T);
     };
   }

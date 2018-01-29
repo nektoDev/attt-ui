@@ -42,7 +42,6 @@ export class TorrentsComponent implements OnInit, AfterViewInit {
     };
     const dialogRef = this.dialog.open(TorrentAddDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.torrentService.addTorrent(<TorrentAddRequest>result).subscribe(r => this.getTorrents());
     });
   }

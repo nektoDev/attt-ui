@@ -6,9 +6,24 @@
   z-index: 1000;
 }
 
-.messageCard {
-  background-color: rgba(30, 136, 229, 0.75);
-  color: white;
+.message-info{
+  color: #31708f;
+  background-color: #d9edf7;
+}
+
+.message-success{
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+
+.message-error{
+  color: #a94442;
+  background-color: #f2dede;
+}
+
+.message-warn{
+  color: #8a6d3b;
+  background-color: #fcf8e3;
 }
 
 .close-button {

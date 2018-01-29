@@ -1,12 +1,12 @@
 <div *ngIf="messageService.messages.length" ngClass="alert-messages mat-elevation-z4">
 
   <div *ngFor='let message of messageService.messages'>
-    <mat-card ngClass="messageCard">
+    <mat-card ngClass="messageCard {{getMessageClass(message.type)}}">
       <div ngClass="close-button">
-        <button mat-icon-button (click)="messageService.clear()"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="messageService.remove(message)"><mat-icon>close</mat-icon></button>
       </div>
       <mat-card-content ngClass="message-content">
-        <span>{{message}}</span>
+        <span>{{message.message}}</span>
       </mat-card-content>
     </mat-card>
   </div>
