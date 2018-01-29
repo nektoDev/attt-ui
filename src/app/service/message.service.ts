@@ -5,21 +5,21 @@ import {Message, MessageType} from '../model/message';
 export class MessageService {
   messages: Message[] = [];
 
-  add(message: string, type: MessageType) {
-    const message = <Message>{message: message, type: type};
-    this.messages.push(message);
-    setTimeout(() => {
-      this.remove(message);
-    }, this.selectTimeout(type));
-
-  }
-
-  private selectTimeout(type: MessageType): number{
+  private static selectTimeout(type: MessageType): number{
     switch (type) {
       case MessageType.ERROR: return 10000;
       case MessageType.WARN: return 5000;
       default: return 2000;
     }
+  }
+
+  add(msg: string, type: MessageType) {
+    const message = <Message>{message: msg, type: type};
+    this.messages.push(message);
+    setTimeout(() => {
+      this.remove(message);
+    }, MessageService.selectTimeout(type));
+
   }
 
   info(message: string) {
