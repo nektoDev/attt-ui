@@ -19,7 +19,6 @@ export class TorrentService {
 
   getTorrents(): Observable<Torrent[]> {
     return this.http.get<Torrent[]>(this.torrentURL).pipe(
-      tap(_ => this.messages.success(`Torrents fetched`)),
       catchError(this.handleError('Fetching torrents', []))
     );
   }
