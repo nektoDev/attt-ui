@@ -32,7 +32,12 @@ export class TorrentsComponent implements OnInit, AfterViewInit {
 
   getTorrents() {
     this.torrentService.getTorrents()
-      .subscribe(t => this.dataSource.data = t.sort((t1, t2) => t2.created.valueOf() - t1.created.valueOf()));
+      .subscribe(t => this.dataSource.data = t.sort(function(t1, t2) {
+        if (t1.lastUpdated == null) {
+          return t2.lastUpdated != null ? 1 : 0;
+        }
+        return t2.lastUpdated != null ? t2.lastUpdated.valueOf() - t1.lastUpdated.valueOf() : -1;
+      }));
   }
 
   openAddTorrentDialog() {
